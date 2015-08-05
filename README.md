@@ -132,6 +132,12 @@ parts (automatically positioned), and get decent results without many tweaks
 
 * Autodesk Meshmixer is a nice .obj to .stl conveter.
 
+* My extruder steps per mm are way off the shipped values, this is not reflected in
+this branch, I'm keeping in my personal settings branch, but check this in your printer:
+if the Bowden extrusion gear diameter is 10 mm is likely your setting is about 101 ~ 102.5
+steps per mm.
+
+
 ## Over Upstream Marlin Changes
 
 ### Jun/8th/2015
