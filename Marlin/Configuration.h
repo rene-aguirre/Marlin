@@ -51,6 +51,10 @@
 #endif
 #else
   #define MOTHERBOARD BOARD_RAMPS_13_EFB
+  // when moving with lcd board units increased in x4 steps
+  // this makes sure to have a single unit resolution
+  #define ENCODER_PULSES_PER_STEP 	4
+  #define ENCODER_STEPS_PER_MENU_ITEM 	1
 #endif
 
 // Define this to set a custom name for your generic Mendel,
@@ -151,6 +155,8 @@
 #define HEATER_0_MAXTEMP 280
 #define HEATER_1_MAXTEMP 280
 #define HEATER_2_MAXTEMP 280
+// max safe 'steady' value is 90, but can't be set as just one degree over
+// causes the printer to enter bed temp protection
 #define BED_MAXTEMP 94
 #endif
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
@@ -522,7 +528,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define DEFAULT_RETRACT_ACCELERATION  3000   // X, Y, Z and E max acceleration in mm/s^2 for retracts
 
 #else
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.5, 80.5,400*1.014,80.5}
+// extruder using 10 mm diameter gear
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.5, 80.5,400*1.014,102.4}
 #define DEFAULT_MAX_FEEDRATE          {100, 100, 5, 50}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {5000,5000,90,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
