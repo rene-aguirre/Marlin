@@ -155,9 +155,10 @@
 #define HEATER_0_MAXTEMP 280
 #define HEATER_1_MAXTEMP 280
 #define HEATER_2_MAXTEMP 280
-// max safe 'steady' value is 90, but can't be set as just one degree over
-// causes the printer to enter bed temp protection
-#define BED_MAXTEMP 94
+// Limit seems to be given by mechanical stress, so trying to set a high
+// temperature is more of a time and stability issue.
+// Moving setting to prepare it for different bet setups.
+#define BED_MAXTEMP 130
 #endif
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
 // average current. The value should be an integer and the heat bed will be turned on for 1 interval of
@@ -540,7 +541,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 #else
 // extruder using 10 mm diameter gear
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.5, 80.5,400*1.014,102.4}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.5, 80.5,391.4,102.4}
 #define DEFAULT_MAX_FEEDRATE          {100, 100, 5, 50}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {5000,5000,90,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
@@ -556,7 +557,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // #define EXTRUDER_OFFSET_Y {0.0, 5.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
 
 // The speed change that does not require acceleration (i.e. the software might assume it can be done instantaneously)
-#define DEFAULT_XYJERK                20.0    // (mm/sec)
+#define DEFAULT_XYJERK                15.0    // (mm/sec)
 #define DEFAULT_ZJERK                 0.4     // (mm/sec)
 #define DEFAULT_EJERK                 5.0    // (mm/sec)
 
